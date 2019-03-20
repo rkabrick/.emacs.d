@@ -1,0 +1,305 @@
+* Interface Tweaks
+#+BEGIN_SRC emacs-lisp
+(setq inhibit-startup-message t)
+(tool-bar-mode -1)
+(fset 'yes-or-no-p 'y-or-n-p)
+(global-set-key (kbd "<f5>") 'revert-buffer)
+#+END_SRC
+* Misc
+** try
+#+BEGIN_SRC emacs-lisp
+(use-package try
+	:ensure t)
+#+END_SRC
+
+** Ace Windows
+#+BEGIN_SRC emacs-lisp
+(use-package ace-window
+:ensure t
+:init
+(progn
+(setq aw-scope 'frame)
+(global-set-key (kbd "C-x O") 'other-frame)
+  (global-set-key [remap other-window] 'ace-window)
+  (custom-set-faces
+   '(aw-leading-char-face
+     ((t (:inherit ace-jump-face-foreground :height 3.0)))))
+  ))
+#+END_SRC
+
+** Autocomplete
+#+BEGIN_SRC emacs-lisp
+(use-package auto-complete
+:ensure t
+:init
+(progn
+(ac-config-default)
+  (global-auto-complete-mode t)
+ ))
+#+END_SRC
+
+* IDE Configurations
+** Python
+#+BEGIN_SRC emacs-lisp
+(setq py-python-command "python3")
+(setq python-shell-interpreter "python3")
+
+
+(use-package elpy
+:ensure t
+:config
+(elpy-enable))
+
+(use-package virtualenvwrapper
+  :ensure t
+  :config
+  (venv-initialize-interactive-shells)
+  (venv-initialize-eshell))
+#+END_SRC
+
+** Javascript
+#+BEGIN_SRC emacs-lisp
+(use-package js2-mode
+:ensure t
+:ensure ac-js2
+:init
+(progn
+(add-hook 'js-mode-hook 'js2-minor-mode)
+(add-hook 'js2-mode-hook 'ac-js2-mode)
+))
+
+(use-package js2-refactor
+:ensure t
+:config
+(progn
+(js2r-add-keybindings-with-prefix "C-c C-m")
+;; eg. extract function with `C-c C-m ef`.
+(add-hook 'js2-mode-hook #'js2-refactor-mode)))
+(use-package tern
+:ensure tern
+:ensure tern-auto-complete
+:config
+(progn
+(add-hook 'js-mode-hook (lambda () (tern-mode t)))
+(add-hook 'js2-mode-hook (lambda () (tern-mode t)))
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+;;(tern-ac-setup)
+))
+
+;;(use-package jade
+;;:ensure t
+;;)
+
+;; use web-mode for .jsx files
+(add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
+
+
+;; turn on flychecking globally
+(add-hook 'after-init-hook #'global-flycheck-mode)
+
+;; disable jshint since we prefer eslint checking
+(setq-default flycheck-disabled-checkers
+  (append flycheck-disabled-checkers
+    '(javascript-jshint)))
+
+;; use eslint with web-mode for jsx files
+(flycheck-add-mode 'javascript-eslint 'web-mode)
+
+;; customize flycheck temp file prefix
+(setq-default flycheck-temp-prefix ".flycheck")
+
+;; disable json-jsonlist checking for json files
+(setq-default flycheck-disabled-checkers
+  (append flycheck-disabled-checkers
+    '(json-jsonlist)))
+
+;; adjust indents for web-mode to 2 spaces
+(defun my-web-mode-hook ()
+  "Hooks for Web mode. Adjust indents"
+  ;;; http://web-mode.org/
+  (setq web-mode-markup-indent-offset 2)
+  (setq web-mode-css-indent-offset 2)
+  (setq web-mode-code-indent-offset 2))
+(add-hook 'web-mode-hook  'my-web-mode-hook)
+#+END_SRC
+
+** C++
+#+BEGIN_SRC emacs-lisp
+(use-package ggtags
+:ensure t
+:config
+(add-hook 'c-mode-common-hook
+          (lambda ()
+            (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
+              (ggtags-mode 1))))
+)
+
+#+END_SRC
+** Origami Folding
+#+BEGIN_SRC emacs-lisp
+(use-package origami
+:ensure t)
+#+END_SRC
+* MISC
+** Eyebrowse
+#+BEGIN_SRC emacs-lisp
+(use-package eyebrowse
+:ensure t
+:config
+(eyebrowse-mode)
+)
+
+#+END_SRC
+** Git
+#+BEGIN_SRC emacs-lisp
+(use-package magit
+  :ensure t
+  :init
+  (progn
+  (bind-key "C-x g" 'magit-status)
+  ))
+
+  (use-package git-gutter
+  :ensure t
+  :init
+  (global-git-gutter-mode +1))
+
+  (global-set-key (kbd "M-g M-g") 'hydra-git-gutter/body)
+
+
+  (use-package git-timemachine
+  :ensure t
+  )
+(defhydra hydra-git-gutter (:body-pre (git-gutter-mode 1)
+                            :hint nil)
+  "
+Git gutter:
+  _j_: next hunk        _s_tage hunk     _q_uit
+  _k_: previous hunk    _r_evert hunk    _Q_uit and deactivate git-gutter
+  ^ ^                   _p_opup hunk
+  _h_: first hunk
+  _l_: last hunk        set start _R_evision
+"
+  ("j" git-gutter:next-hunk)
+  ("k" git-gutter:previous-hunk)
+  ("h" (progn (goto-char (point-min))
+              (git-gutter:next-hunk 1)))
+  ("l" (progn (goto-char (point-min))
+              (git-gutter:previous-hunk 1)))
+  ("s" git-gutter:stage-hunk)
+  ("r" git-gutter:revert-hunk)
+  ("p" git-gutter:popup-hunk)
+  ("R" git-gutter:set-start-revision)
+  ("q" nil :color blue)
+  ("Q" (progn (git-gutter-mode -1)
+              ;; git-gutter-fringe doesn't seem to
+              ;; clear the markup right away
+              (sit-for 0.1)
+              (git-gutter:clear))
+       :color blue))
+#+END_SRC
+
+** PDF Tools
+#+BEGIN_SRC emacs-lisp
+(use-package pdf-tools
+:ensure t)
+(use-package org-pdfview
+:ensure t)
+
+(require 'pdf-tools)
+(require 'org-pdfview)
+
+#+END_SRC
+** Better Shell
+#+BEGIN_SRC emacs-lisp
+(use-package better-shell
+    :ensure t
+    :bind (("C-\"" . better-shell-shell)
+           ("C-:" . better-shell-remote-open)))
+#+END_SRC
+** Yasnippet
+#+BEGIN_SRC emacs-lisp
+(use-package yasnippet
+  :ensure t
+  :init
+    (yas-global-mode 1))
+
+(use-package yasnippet-snippets
+  :ensure t)
+#+END_SRC
+*** Autoyasnippet
+#+BEGIN_SRC emacs-lisp
+(use-package auto-yasnippet
+:ensure t)
+#+END_SRC
+** org-bullets
+#+BEGIN_SRC emacs-lisp
+(use-package org-bullets
+    :ensure t)
+#+END_SRC
+
+** Sublimity Mode
+#+BEGIN_SRC emacs-lisp
+(require 'sublimity)
+(require 'sublimity-scroll)
+(require 'sublimity-map) ;; experimental
+;; (require 'sublimity-attractive)
+(sublimity-mode t)
+#+END_SRC
+
+** NeoTree
+#+BEGIN_SRC emacs-lisp
+(add-to-list 'load-path "~/.emacs.d/initializers/neotree.el")
+(require 'neotree)
+(global-set-key [f8] 'neotree-toggle)
+(global-set-key (kbd "<f8>") 'neotree-toggle)
+#+END_SRC
+
+** Windmove
+#+BEGIN_SRC emacs-lisp
+(when (fboundp 'windmove-default-keybindings)
+  (windmove-default-keybindings))
+#+END_SRC
+
+** Solaire Mode
+#+BEGIN_SRC emacs-lisp
+(require 'solaire-mode)
+
+;; brighten buffers (that represent real files)
+(add-hook 'change-major-mode-hook #'turn-on-solaire-mode)
+;; To enable solaire-mode unconditionally for certain modes:
+(add-hook 'ediff-prepare-buffer-hook #'solaire-mode)
+
+;; ...if you use auto-revert-mode, this prevents solaire-mode from turning
+;; itself off every time Emacs reverts the file
+(add-hook 'after-revert-hook #'turn-on-solaire-mode)
+
+;; highlight the minibuffer when it is activated:
+(add-hook 'minibuffer-setup-hook #'solaire-mode-in-minibuffer)
+
+;; if the bright and dark background colors are the wrong way around, use this
+;; to switch the backgrounds of the `default` and `solaire-default-face` faces.
+;; This should be used *after* you load the active theme!
+;;
+;; NOTE: This is necessary for themes in the doom-themes package!
+(solaire-mode-swap-bg)
+
+;; An alternative for `use-package' users:
+(use-package solaire-mode
+  :hook ((change-major-mode after-revert ediff-prepare-buffer) . turn-on-solaire-mode)
+  :config
+  (add-hook 'minibuffer-setup-hook #'solaire-mode-in-minibuffer)
+  (solaire-mode-swap-bg))
+#+END_SRC
+
+** Yasnippet
+#+BEGIN_SRC emacs-lisp
+(add-to-list 'load-path
+              "~/.emacs.d/plugins/yasnippet")
+(require 'yasnippet)
+(yas-global-mode 1)
+#+END_SRC
+** Artist
+#+BEGIN_SRC emacs-lisp
+(require 'artist)
+#+END_SRC

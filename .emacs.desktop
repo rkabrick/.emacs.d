@@ -1,0 +1,55 @@
+;; -*- mode: emacs-lisp; coding: emacs-mule; -*-
+;; --------------------------------------------------------------------------
+;; Desktop File for Emacs
+;; --------------------------------------------------------------------------
+;; Created Sun Mar  3 19:59:23 2019
+;; Desktop file format version 208
+;; Emacs version 26.1
+
+;; Global section:
+(setq desktop-saved-frameset [frameset 1 (23676 30827 577657 451000) (desktop . "208") "rkabrick@rkabrick-lab" nil nil ((((minibuffer . t) (undecorated) (override-redirect) (font-backend xft) (font . "-SRC-Hack-normal-normal-normal-*-14-*-*-*-m-0-iso10646-1") (font-parameter . "Hack:size=14:style=Regular") (border-width . 0) (internal-border-width . 0) (right-divider-width . 0) (bottom-divider-width . 0) (vertical-scroll-bars) (horizontal-scroll-bars) (foreground-color . "#abb2bf") (background-color . "#282c34") (mouse-color . "black") (border-color . "black") (screen-gamma) (line-spacing) (left-fringe . 2) (right-fringe . 8) (no-special-glyphs) (scroll-bar-foreground) (scroll-bar-background) (menu-bar-lines . 1) (tool-bar-lines . 0) (title) (wait-for-wm . t) (tool-bar-position . top) (inhibit-double-buffering) (icon-type . t) (auto-raise) (auto-lower) (cursor-type . box) (scroll-bar-width . 0) (scroll-bar-height . 0) (alpha) (no-focus-on-map) (no-accept-focus) (fullscreen . maximized) (visibility . t) (skip-taskbar) (z-group) (display-type . color) (background-mode . dark) (cursor-color . "#abb2bf") (sticky) (environment) (powerline-cache) (frameset--id . "057F-28D0-D7A4-CED6") (frameset--mini t . t) (modeline . t) (unsplittable) (icon-name) (display . ":1") (explicit-name) (height . 58) (width . 208) (left . 1587) (top . 139)) ((min-height . 4) (min-width . 30) (min-height-ignore . 3) (min-width-ignore . 12) (min-height-safe . 1) (min-width-safe . 6) (min-pixel-height . 68) (min-pixel-width . 240) (min-pixel-height-ignore . 51) (min-pixel-width-ignore . 96) (min-pixel-height-safe . 17) (min-pixel-width-safe . 48)) hc (pixel-width . 1674) (pixel-height . 884) (total-width . 209) (total-height . 52) (normal-height . 1.0) (normal-width . 1.0) (combination-limit) (leaf (pixel-width . 116) (pixel-height . 884) (total-width . 14) (total-height . 52) (normal-height . 1.0) (normal-width . 0.06941950927588271) (buffer "lab1.org" (selected) (hscroll . 0) (fringes 2 8 nil) (margins nil) (scroll-bars nil 0 t nil 0 t) (vscroll . 0) (dedicated) (point . 7414) (start . 6091))) (leaf (pixel-width . 618) (pixel-height . 884) (total-width . 77) (total-height . 52) (normal-height . 1.0) (normal-width . 0.3696172248803828) (buffer "*Org LATEX Export*" (selected) (hscroll . 0) (fringes 2 8 nil) (margins nil) (scroll-bars nil 0 t nil 0 t) (vscroll . 0) (dedicated) (point . 789) (start . 1))) (leaf (last . t) (pixel-width . 940) (pixel-height . 884) (total-width . 118) (total-height . 52) (normal-height . 1.0) (normal-width . 0.5609632658437345) (buffer "*Latex Preview Pane Welcome*" (selected) (hscroll . 0) (fringes 2 8 nil) (margins nil) (scroll-bars nil 0 t nil 0 t) (vscroll . 0) (dedicated) (point . 1) (start . 1)))))])
+(setq desktop-missing-file-warning nil)
+(setq tags-file-name nil)
+(setq tags-table-list nil)
+(setq search-ring nil)
+(setq regexp-search-ring nil)
+(setq register-alist nil)
+(setq file-name-history '("/home/rkabrick/.emacs.d" "/home/rkabrick/school/spring2019/CPEG324/Lab1/lab1.org" "/scp:rkabrick@CPEG324:/" "/rkabrick@CPEG324:rkabrick-lab:/" "/rkabrick@CPEG324" "/home/rkabrick/.emacs.d/initializers/reopenbuffers.el" "~/.emacs.d/initializers/reopenbuffers.el" "/scp:rkabrick@CPEG324:/usa/rkabrick/firstTest.s" "~/.emacs.d/session.1026cf5d3dc58b9ec155104867539543500000008140090" "~/Documents/school/resume.tex" "~/.emacs.d/initializers/xelatex.el" "~/Documents/school/spring2019/CISC361/CISC361.tex" "~/Documents/school/spring2019/CISC361/CISC361.pdf" "~/Research/ANL.org" "~/Research/ReadingSession/Hennesy.org" "~/school/Research/ReadingSession/twoTheo.org" "~/Documents/school/spring2019/CISC361/CISC361.org" "~/.emacs.d/initializers/orgLatex.el" "~/.emacs.d/initializers/ess.el\nall-the-icons-faces.el" "~/.emacs.d/initializers/all-the-icons-faces.el" "~/.emacs.d/initializers/org-bullets.el" "~/Research/ReadingSession/EARTH.html" "~/Research/ReadingSession/EARTH.org" "~/Documents/valentine.org" "~/Documents/movieList.html" "~/Documents/movieList.org"))
+
+;; Buffer section -- buffers listed in same order as in buffer list:
+(desktop-create-buffer 208
+  "/home/rkabrick/school/spring2019/CPEG324/Lab1/lab1.org"
+  "lab1.org"
+  'org-mode
+  '(page-break-lines-mode projectile-mode ivy-mode company-mode global-auto-revert-mode diff-hl-mode diff-hl-flydiff-mode smartparens-mode volatile-highlights-mode undo-tree-mode drag-stuff-mode which-key-mode yas-minor-mode override-global-mode)
+  7414
+  '(7414 nil)
+  nil
+  nil
+  '((buffer-display-time 23676 30467 971018 776000) (buffer-file-coding-system . utf-8-unix) (truncate-lines . t))
+  '((mark-ring (6564 25 6529 6837 7414 6545 7414))))
+
+(desktop-create-buffer 208
+  "/home/rkabrick/Documents/school/resume.tex"
+  "resume.tex"
+  'latex-mode
+  '(projectile-mode ivy-mode company-mode global-auto-revert-mode diff-hl-mode diff-hl-flydiff-mode smartparens-mode volatile-highlights-mode undo-tree-mode drag-stuff-mode which-key-mode yas-minor-mode override-global-mode)
+  1544
+  '(1472 nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-display-time 23676 29826 801166 345000) (buffer-file-coding-system . utf-8-unix))
+  '((mark-ring (1544))))
+
+(desktop-create-buffer 208
+  "/home/rkabrick/.emacs.d/initializers/reopenbuffers.el"
+  "reopenbuffers.el"
+  'emacs-lisp-mode
+  '(eldoc-mode page-break-lines-mode projectile-mode ivy-mode company-mode global-auto-revert-mode magit-file-mode diff-hl-mode diff-hl-flydiff-mode linum-mode smartparens-mode volatile-highlights-mode undo-tree-mode flycheck-mode drag-stuff-mode which-key-mode yas-minor-mode override-global-mode)
+  37
+  '(nil nil)
+  nil
+  nil
+  '((buffer-display-time 23676 18238 570276 380000) (buffer-file-coding-system . prefer-utf-8-unix))
+  '((mark-ring nil)))
+

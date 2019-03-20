@@ -1,0 +1,20 @@
+;;;; Emacs Bookmark Format Version 1 ;;;; -*- coding: utf-8-emacs -*- 
+;;; This format is meant to be slightly human-readable;
+;;; nevertheless, you probably don't want to edit it.
+;;; -*- End Of Bookmark File Format Version Stamp -*-
+(("org-capture-last-stored-marker"
+ (filename . "~/Documents/journal/journal.org")
+ (front-context-string)
+ (rear-context-string . "llo\n\n**** Howdy\n")
+ (position . 76))
+("org-refile-last-stored"
+ (filename . "~/Documents/school/winter2019/exam2.org")
+ (front-context-string . "** 2.4: Textbook")
+ (rear-context-string . " is transitive\n\n")
+ (position . 3771))
+("org-capture-last-stored"
+ (filename . "~/Documents/journal/journal.org")
+ (front-context-string . "**** If you hit ")
+ (rear-context-string . "n you are home\n\n")
+ (position . 1975))
+)

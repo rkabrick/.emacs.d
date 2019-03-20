@@ -1,0 +1,1 @@
+(setq TeX-engine 'xetex)
